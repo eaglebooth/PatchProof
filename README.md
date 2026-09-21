@@ -2,6 +2,10 @@
 
 PatchProof is a GenLayer Intelligent Contract that publishes verifiable security-remediation receipts. Authority comes exclusively from `gl.message.sender_address` and a project policy stored on-chain. Markdown files are immutable, commit-pinned evidence; they never grant authority.
 
+**Live contract:** [`0x85704ACF4212dC37D02697706d4FE83CbE5D0940`](https://explorer-studio.genlayer.com/address/0x85704ACF4212dC37D02697706d4FE83CbE5D0940) on GenLayer Studionet (`61999`).
+
+**Live verification:** [finalized happy-path and adversarial transaction ledger](./docs/LIVE_STUDIONET_EVIDENCE.md).
+
 ## Why intelligent consensus matters
 
 Security fixes rarely reduce to an exact string comparison. PatchProof asks validators to compare an advisory, a maintainer's patch report, and an independent reproduction report for semantic agreement about root cause, affected versions, regression coverage, residual risk, and the claimed fixed version. Deterministic contract logic then gates the receipt on the bounded `REMEDIATED` verdict.
@@ -39,6 +43,8 @@ python -m pytest -q -p no:cacheprovider
 ```
 
 The behavioral suite covers schema/deployment, malformed inputs, namespace isolation, sender authorization, repository scoping, full remediation, receipt replay, and a non-remediated rejection path.
+
+The same lifecycle was executed against the deployed contract with two test wallets. Twelve transactions finalized: six successful transitions and six expected GenVM rejections. Consensus returned `REMEDIATED`, and canonical readback shows a consumed, single-use receipt. See the live evidence ledger above.
 
 ## Studio deployment
 

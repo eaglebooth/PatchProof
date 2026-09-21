@@ -1,0 +1,296 @@
+{
+  "contract": "0x85704ACF4212dC37D02697706d4FE83CbE5D0940",
+  "network": "studionet-61999",
+  "actors": {
+    "controllerMaintainer": "0xeb57bc7125fa60d7482CE12058397369AB3581f8",
+    "reviewer": "0x2da5393d7BBb9A037dc3abB56DbbC5C150fc843f"
+  },
+  "ids": {
+    "project": "parser-muaobohp",
+    "case": "pp-muaobohp"
+  },
+  "sources": {
+    "advisory": {
+      "url": "https://raw.githubusercontent.com/eaglebooth/PatchProof/d72d8428773a3b33ef406413a21a6cc0698c995d/fixtures/ADVISORY.md",
+      "bytes": 367,
+      "sha256": "8ea1e9d5373b429e1236b72974fde75fd21d3bff0ecc94121b85cafec7d07aee"
+    },
+    "patch": {
+      "url": "https://raw.githubusercontent.com/eaglebooth/PatchProof/d72d8428773a3b33ef406413a21a6cc0698c995d/fixtures/PATCH_REPORT.md",
+      "bytes": 349,
+      "sha256": "d9e24312cff0a9f27002a1095599735eefa0ca93648f6c0e551662815c99767a"
+    },
+    "verification": {
+      "url": "https://raw.githubusercontent.com/eaglebooth/ForkRight/011fd33fbe6aa1fde66c8489c6ca3c7b282d6e36/docs/patchproof-independent-verification.md",
+      "bytes": 1030,
+      "sha256": "3b08705cb8bdb358262a83b95302f2b2728e27943916a805e11f3718cf7fcc23"
+    }
+  },
+  "transactions": [
+    {
+      "label": "register authority-bound project",
+      "hash": "0xb01a380c5c0bde3fa76cd5e21e36b252876ea133a85131c54cffdc53333d1a47",
+      "expected": "SUCCESS",
+      "status": "FINALIZED",
+      "execution": "SUCCESS"
+    },
+    {
+      "label": "reject duplicate project",
+      "hash": "0x73582d88610515ff0ca8d922b4a0499cadfe2701104d993d9a05fc790e7a9b2f",
+      "expected": "ROLLBACK",
+      "status": "FINALIZED",
+      "execution": "ERROR"
+    },
+    {
+      "label": "open remediation case",
+      "hash": "0x3fbefb2d8b0e6c246b535a6a23d59976e55e7a15d9887dc1d29a4388e060bb7c",
+      "expected": "SUCCESS",
+      "status": "FINALIZED",
+      "execution": "SUCCESS"
+    },
+    {
+      "label": "reject reviewer patch submission",
+      "hash": "0x61e15963adec20feaa228a266b2a259b4fa4e62247fe351bd546469ccc14d8b7",
+      "expected": "ROLLBACK",
+      "status": "FINALIZED",
+      "execution": "ERROR"
+    },
+    {
+      "label": "submit maintainer patch",
+      "hash": "0x10ad24cdd3404e6baad8f12cb8fc33b039e2b97ad02c09b9c8db6891811c4cb4",
+      "expected": "SUCCESS",
+      "status": "FINALIZED",
+      "execution": "SUCCESS"
+    },
+    {
+      "label": "reject assessment before verification",
+      "hash": "0xfbd2d46c793ba8fbf22b27ee9e17bf570340c9cb108f876361dc0bc0a7abf513",
+      "expected": "ROLLBACK",
+      "status": "FINALIZED",
+      "execution": "ERROR"
+    },
+    {
+      "label": "reject maintainer verification",
+      "hash": "0xa0796eeaef9377c6cf051cd2cd2171ffc28105cc5f8f1e42ccddde525c954454",
+      "expected": "ROLLBACK",
+      "status": "FINALIZED",
+      "execution": "ERROR"
+    },
+    {
+      "label": "submit independent verification",
+      "hash": "0x0939ad38f4afbed204e1df345e56dca7d9e746bf8ad9cc3b2b10d5e79d364d5d",
+      "expected": "SUCCESS",
+      "status": "FINALIZED",
+      "execution": "SUCCESS"
+    },
+    {
+      "label": "assess semantic remediation",
+      "hash": "0x1a21a1d311bc9fa9c214e8e578a0efcee0df13bd7dda594d816e4b627914da9b",
+      "expected": "SUCCESS",
+      "status": "FINALIZED",
+      "execution": "SUCCESS"
+    },
+    {
+      "label": "reject reviewer receipt publication",
+      "hash": "0x1de5b9d68fe19df94a719e8f5f5edfa539b4b392516766ab9c639658ea5dcb6c",
+      "expected": "ROLLBACK",
+      "status": "FINALIZED",
+      "execution": "ERROR"
+    },
+    {
+      "label": "publish remediation receipt",
+      "hash": "0xbeb9c6bb3a717c3d203558c9daca9c16f1e7e0017dd1daa75abddd333884c3c9",
+      "expected": "SUCCESS",
+      "status": "FINALIZED",
+      "execution": "SUCCESS"
+    },
+    {
+      "label": "reject receipt replay",
+      "hash": "0x1c9ebaa1c9a5f87ff9d29f3a605dab7aae06617feb86a984f2172573ad158940",
+      "expected": "ROLLBACK",
+      "status": "FINALIZED",
+      "execution": "ERROR"
+    }
+  ],
+  "assertions": [
+    {
+      "label": "deployed PatchProof V1 schema",
+      "pass": true,
+      "details": {
+        "name": "PatchProof",
+        "schema": "semantic-security-remediation-v1",
+        "version": 1
+      }
+    },
+    {
+      "label": "register authority-bound project succeeded in GenVM",
+      "pass": true,
+      "details": {
+        "execution": "SUCCESS",
+        "status": "FINALIZED"
+      }
+    },
+    {
+      "label": "reject duplicate project reverted in GenVM",
+      "pass": true,
+      "details": {
+        "execution": "ERROR",
+        "status": "FINALIZED"
+      }
+    },
+    {
+      "label": "open remediation case succeeded in GenVM",
+      "pass": true,
+      "details": {
+        "execution": "SUCCESS",
+        "status": "FINALIZED"
+      }
+    },
+    {
+      "label": "reject reviewer patch submission reverted in GenVM",
+      "pass": true,
+      "details": {
+        "execution": "ERROR",
+        "status": "FINALIZED"
+      }
+    },
+    {
+      "label": "submit maintainer patch succeeded in GenVM",
+      "pass": true,
+      "details": {
+        "execution": "SUCCESS",
+        "status": "FINALIZED"
+      }
+    },
+    {
+      "label": "reject assessment before verification reverted in GenVM",
+      "pass": true,
+      "details": {
+        "execution": "ERROR",
+        "status": "FINALIZED"
+      }
+    },
+    {
+      "label": "reject maintainer verification reverted in GenVM",
+      "pass": true,
+      "details": {
+        "execution": "ERROR",
+        "status": "FINALIZED"
+      }
+    },
+    {
+      "label": "submit independent verification succeeded in GenVM",
+      "pass": true,
+      "details": {
+        "execution": "SUCCESS",
+        "status": "FINALIZED"
+      }
+    },
+    {
+      "label": "assess semantic remediation succeeded in GenVM",
+      "pass": true,
+      "details": {
+        "execution": "SUCCESS",
+        "status": "FINALIZED"
+      }
+    },
+    {
+      "label": "consensus confirmed remediation",
+      "pass": true,
+      "details": {
+        "advisory_url": "https://raw.githubusercontent.com/eaglebooth/PatchProof/d72d8428773a3b33ef406413a21a6cc0698c995d/fixtures/ADVISORY.md",
+        "affected_range": "<2.4.1",
+        "assessment_digest": "9d2f18c287755c147ea1ebbee7a8abe2e79f1b3a857859fcc0d1f670b2237426",
+        "case_id": "pp-muaobohp",
+        "commitment": "4b4651d0b81bb12d858171ab1db1e54c5a704334e0b4dea8e969cfece1fa55f9",
+        "consumed": false,
+        "exists": true,
+        "fixed_version": "2.4.1",
+        "patch_url": "https://raw.githubusercontent.com/eaglebooth/PatchProof/d72d8428773a3b33ef406413a21a6cc0698c995d/fixtures/PATCH_REPORT.md",
+        "project_id": "parser-muaobohp",
+        "receipt": "",
+        "status": "ASSESSED",
+        "verdict": "REMEDIATED",
+        "verification_url": "https://raw.githubusercontent.com/eaglebooth/ForkRight/011fd33fbe6aa1fde66c8489c6ca3c7b282d6e36/docs/patchproof-independent-verification.md"
+      }
+    },
+    {
+      "label": "reject reviewer receipt publication reverted in GenVM",
+      "pass": true,
+      "details": {
+        "execution": "ERROR",
+        "status": "FINALIZED"
+      }
+    },
+    {
+      "label": "publish remediation receipt succeeded in GenVM",
+      "pass": true,
+      "details": {
+        "execution": "SUCCESS",
+        "status": "FINALIZED"
+      }
+    },
+    {
+      "label": "reject receipt replay reverted in GenVM",
+      "pass": true,
+      "details": {
+        "execution": "ERROR",
+        "status": "FINALIZED"
+      }
+    },
+    {
+      "label": "receipt finalized and consumed once",
+      "pass": true,
+      "details": {
+        "advisory_url": "https://raw.githubusercontent.com/eaglebooth/PatchProof/d72d8428773a3b33ef406413a21a6cc0698c995d/fixtures/ADVISORY.md",
+        "affected_range": "<2.4.1",
+        "assessment_digest": "9d2f18c287755c147ea1ebbee7a8abe2e79f1b3a857859fcc0d1f670b2237426",
+        "case_id": "pp-muaobohp",
+        "commitment": "4b4651d0b81bb12d858171ab1db1e54c5a704334e0b4dea8e969cfece1fa55f9",
+        "consumed": true,
+        "exists": true,
+        "fixed_version": "2.4.1",
+        "patch_url": "https://raw.githubusercontent.com/eaglebooth/PatchProof/d72d8428773a3b33ef406413a21a6cc0698c995d/fixtures/PATCH_REPORT.md",
+        "project_id": "parser-muaobohp",
+        "receipt": "bd773fab7083d85c7f172b11bf0abf7432c5d4afa459c168ddedf9b38470e503",
+        "status": "RECEIPT_PUBLISHED",
+        "verdict": "REMEDIATED",
+        "verification_url": "https://raw.githubusercontent.com/eaglebooth/ForkRight/011fd33fbe6aa1fde66c8489c6ca3c7b282d6e36/docs/patchproof-independent-verification.md"
+      }
+    }
+  ],
+  "final": {
+    "project": {
+      "controller": "0xeb57bc7125fa60d7482ce12058397369ab3581f8",
+      "exists": true,
+      "maintainer": "0xeb57bc7125fa60d7482ce12058397369ab3581f8",
+      "policy": "A remediation must match the advisory root cause and affected range, include regression tests, document residual risk, and be independently reproduced before a receipt can be published.",
+      "project_id": "parser-muaobohp",
+      "repository": "eaglebooth/patchproof",
+      "reviewer": "0x2da5393d7bbb9a037dc3abb56dbbc5c150fc843f",
+      "reviewer_repository": "eaglebooth/forkright",
+      "revision": 1
+    },
+    "case": {
+      "advisory_url": "https://raw.githubusercontent.com/eaglebooth/PatchProof/d72d8428773a3b33ef406413a21a6cc0698c995d/fixtures/ADVISORY.md",
+      "affected_range": "<2.4.1",
+      "assessment_digest": "9d2f18c287755c147ea1ebbee7a8abe2e79f1b3a857859fcc0d1f670b2237426",
+      "case_id": "pp-muaobohp",
+      "commitment": "4b4651d0b81bb12d858171ab1db1e54c5a704334e0b4dea8e969cfece1fa55f9",
+      "consumed": true,
+      "exists": true,
+      "fixed_version": "2.4.1",
+      "patch_url": "https://raw.githubusercontent.com/eaglebooth/PatchProof/d72d8428773a3b33ef406413a21a6cc0698c995d/fixtures/PATCH_REPORT.md",
+      "project_id": "parser-muaobohp",
+      "receipt": "bd773fab7083d85c7f172b11bf0abf7432c5d4afa459c168ddedf9b38470e503",
+      "status": "RECEIPT_PUBLISHED",
+      "verdict": "REMEDIATED",
+      "verification_url": "https://raw.githubusercontent.com/eaglebooth/ForkRight/011fd33fbe6aa1fde66c8489c6ca3c7b282d6e36/docs/patchproof-independent-verification.md"
+    },
+    "stats": {
+      "cases": 1,
+      "projects": 1,
+      "receipts": 1
+    }
+  }
+}

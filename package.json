@@ -1,0 +1,16 @@
+{
+  "name": "patchproof-live-verification",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "live:e2e": "node scripts/live-e2e.mjs"
+  },
+  "dependencies": {
+    "genlayer-js": "1.1.8",
+    "viem": "2.38.6"
+  },
+  "overrides": {
+    "ws": "8.21.3"
+  }
+}
